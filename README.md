@@ -45,6 +45,7 @@
 | ship-from          | string | null: false  |
 |categori            | integer|              |
 | user_id            |integer | null: false  |
+
 ### Association
  - has_many :item_purchases
  - belongs_to :user, thtough: item purchases
