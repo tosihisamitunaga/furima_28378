@@ -1,24 +1,67 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ テーブル設計
 
-Things you may want to cover:
+ users テーブル
 
-* Ruby version
+| Column         |  Type   | Options    |
+| --------       | ------ | ----------- |
+| nickname       | string | null: false |
+| email          | string | null: false |
+| password       | string | null: false |
+| first_name     |string  | null: false |
+| family_name    | string | null: false |
+| first_name_kana| string | null: false |
+| family_name_kana| string| null: false |
+｜birthday        | date  | null: false |
+ Association
 
-* System dependencies
+- has_many :item_purchases
+- has_many :items, through: item_purchases
 
-* Configuration
 
-* Database creation
+ item_purchases 
 
-* Database initialization
+| Column   | Type    | Options           |
+| -------- | ------  | -----------       |
+| user_id  | integer | foreign_key :true |
+| item_id  | integer | foreign_key :true |
 
-* How to run the test suite
+ Association
+- belongs_to :user
+- belongs_to :item
+- belongs_to :delivary_address
 
-* Services (job queues, cache servers, search engines, etc.)
+ items テーブル
 
-* Deployment instructions
+| Column             | Type   | Options      |
+| --------           | ------ | -----------  |
+| price              | integer| null: false  |
+| image              | string | null: false  |
+| product_name       | string | null: false  |
+| delivery_fee       | integer| null: false  |
+| shipping_data      |integer | null: false  |
+| coments            | text   | null: false  |
+| ship-from          | integer| null: false  |
+|categori            | integer|              |
+| user_id            |integer |foreign_key :true |
 
-* ...
+ Association
+ - has_many :item_purchases
+ - belongs_to :user, thtough: item_purchases
+ 
+
+
+ delivary_address テーブル
+
+| Column            | Type   | Options     |
+| -------------     | ------ | ----------- |
+| postsl_code       | string | null: false |
+| municipalities    | string | null: false |
+| address           | string | null: false |
+| building_name     | string |             |
+| tell              | string | null: false |
+| prefectures      | integer|              |
+
+ Association
+ - belongs_to item_purchases
