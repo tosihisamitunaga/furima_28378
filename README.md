@@ -13,18 +13,19 @@
 | family_name    | string | null: false |
 | first_name kana| string | null: false |
 | family_name kana| string| null: false |
+｜birthday        | string | null: false |
 ### Association
 
-- has_many :items
-- has_many :items, through: item transaction
+- has_many :item_purchases
+- has_many :items, through: item purchases
 
 
-## item_purchases テーブル
+## item_purchases 
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| user_id  | string | null: false |
-| item_id  | string | null: false |
+| Column   | Type    | Options     |
+| -------- | ------  | ----------- |
+| user_id  | integer | null: false |
+| item_id  | integer | null: false |
 
 ### Association
 - belongs_to :users
@@ -33,17 +34,20 @@
 
 ## items テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| kategori | string | null: false |
-| price    | integer| null: false |
-| product  | string | null: false |
-| exhibior | string | null: false |
-| image    | string | null: false |
-
+| Column             | Type   | Options      |
+| --------           | ------ | -----------  |
+| kategori           | string | null: false  |
+| price              | integer| null: false  |
+| exhibior           | string | null: false  |
+| item_image         | string | null: false  |
+| product_name       | string | null: false  |
+| delivery fee       | string | null: false  |
+| shipping data      |string  | null: false  |
+| coments            | string | null: false  |
+| ship-from          | string | null: false  |
 ### Association
- - has_many :items transaction
- - has_many :users, thtough: item transaction
+ - has_many :item_purchases
+ - belongs_to :users, thtough: item purchases
  
 
 
@@ -51,11 +55,13 @@
 
 | Column            | Type   | Options     |
 | -------------     | ------ | ----------- |
-| street_address    | string | null: false |
-| item_image        | string | null: false |
-| product_name      | string | null: false |
-| delivery fee      | string | null: false |
-| day until shipping|string  | null: false |
+| postsl code       | string | null: false |
+| prefectures       | string | null: false |
+| municipalities    | string | null: false |
+| address           | string | null: false |
+| building name     | string | null: false |
+| tell              | integer| null: false |
+
 
 ### Association
- - belongs_to item transaction
+ - belongs_to item purchases
