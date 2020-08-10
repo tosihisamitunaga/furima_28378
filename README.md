@@ -44,7 +44,7 @@
 | coments            | text   | null: false  |
 | ship-from          | string | null: false  |
 |categori            | integer|              |
-| user_id            |integer | null: false  |
+| user_id            |integer |foreign_key :true |
 
 ### Association
  - has_many :item_purchases
@@ -61,7 +61,7 @@
 | address           | string | null: false |
 | building name     | string |             |
 | tell              | string | null: false |
-| prefectures       | integer|             |
+| prefectures      | integer| null: false |
 
 ### Association
  - belongs_to item purchases
