@@ -22,10 +22,10 @@
 
 ## item_purchases 
 
-| Column   | Type    | Options     |
-| -------- | ------  | ----------- |
-| user_id  | integer | null: false |
-| item_id  | integer | null: false |
+| Column   | Type    | Options           |
+| -------- | ------  | -----------       |
+| user_id  | integer | foreign_key :true |
+| item_id  | integer | foreign_key :true |
 
 ### Association
 - belongs_to :user
@@ -37,13 +37,14 @@
 | Column             | Type   | Options      |
 | --------           | ------ | -----------  |
 | price              | integer| null: false  |
-| exhibior           | string | null: false  |
-| item_image         | string | null: false  |
+| image              | string | null: false  |
 | product_name       | string | null: false  |
 | delivery fee       | string | null: false  |
 | shipping data      |string  | null: false  |
-| coments            | string | null: false  |
+| coments            | text   | null: false  |
 | ship-from          | string | null: false  |
+|categori            | integer|              |
+| user_id            |integer | null: false  |
 ### Association
  - has_many :item_purchases
  - belongs_to :user, thtough: item purchases
@@ -59,7 +60,7 @@
 | address           | string | null: false |
 | building name     | string |             |
 | tell              | string | null: false |
-
+| prefectures       | integer|             |
 
 ### Association
  - belongs_to item purchases
