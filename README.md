@@ -55,7 +55,6 @@
 | Column            | Type   | Options     |
 | -------------     | ------ | ----------- |
 | postsl code       | string | null: false |
-| prefectures       | string | null: false |
 | municipalities    | string | null: false |
 | address           | string | null: false |
 | building name     | string |             |
