@@ -11,13 +11,13 @@
 | password       | string | null: false |
 | first_name     |string  | null: false |
 | family_name    | string | null: false |
-| first_name kana| string | null: false |
-| family_name kana| string| null: false |
+| first_name_kana| string | null: false |
+| family_name_kana| string| null: false |
 ｜birthday        | date  | null: false |
  Association
 
 - has_many :item_purchases
-- has_many :items, through: item purchases
+- has_many :items, through: item_purchases
 
 
  item_purchases 
@@ -39,8 +39,8 @@
 | price              | integer| null: false  |
 | image              | string | null: false  |
 | product_name       | string | null: false  |
-| delivery fee       | integer| null: false  |
-| shipping data      |integer | null: false  |
+| delivery_fee       | integer| null: false  |
+| shipping_data      |integer | null: false  |
 | coments            | text   | null: false  |
 | ship-from          | integer| null: false  |
 |categori            | integer|              |
@@ -48,7 +48,7 @@
 
  Association
  - has_many :item_purchases
- - belongs_to :user, thtough: item purchases
+ - belongs_to :user, thtough: item_purchases
  
 
 
@@ -56,12 +56,12 @@
 
 | Column            | Type   | Options     |
 | -------------     | ------ | ----------- |
-| postsl code       | string | null: false |
+| postsl_code       | string | null: false |
 | municipalities    | string | null: false |
 | address           | string | null: false |
-| building name     | string |             |
+| building_name     | string |             |
 | tell              | string | null: false |
 | prefectures      | integer|              |
 
  Association
- - belongs_to item purchases
+ - belongs_to item_purchases
