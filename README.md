@@ -13,7 +13,7 @@
 | family_name    | string | null: false |
 | first_name kana| string | null: false |
 | family_name kana| string| null: false |
-｜birthday        | string | null: false |
+｜birthday        | date  | null: false |
 ### Association
 
 - has_many :item_purchases
@@ -28,15 +28,14 @@
 | item_id  | integer | null: false |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
+- belongs_to :user
+- belongs_to :item
 - belongs_to :delivary_address
 
 ## items テーブル
 
 | Column             | Type   | Options      |
 | --------           | ------ | -----------  |
-| kategori           | string | null: false  |
 | price              | integer| null: false  |
 | exhibior           | string | null: false  |
 | item_image         | string | null: false  |
@@ -47,7 +46,7 @@
 | ship-from          | string | null: false  |
 ### Association
  - has_many :item_purchases
- - belongs_to :users, thtough: item purchases
+ - belongs_to :user, thtough: item purchases
  
 
 
@@ -59,8 +58,8 @@
 | prefectures       | string | null: false |
 | municipalities    | string | null: false |
 | address           | string | null: false |
-| building name     | string | null: false |
-| tell              | integer| null: false |
+| building name     | string |             |
+| tell              | string | null: false |
 
 
 ### Association
