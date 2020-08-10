@@ -61,7 +61,7 @@
 | address           | string | null: false |
 | building name     | string |             |
 | tell              | string | null: false |
-| prefectures      | integer| null: false |
+| prefectures      | integer| foreign_key :true |
 
 ### Association
  - belongs_to item purchases
