@@ -4,19 +4,22 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| name     | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-
+| Column         |  Type   | Options    |
+| --------       | ------ | ----------- |
+| nickname       | string | null: false |
+| email          | string | null: false |
+| password       | string | null: false |
+| first_name     |string  | null: false |
+| family_name    | string | null: false |
+| first_name kana| string | null: false |
+| family_name kana| string| null: false |
 ### Association
 
 - has_many :items
 - has_many :items, through: item transaction
 
 
-## items transaction テーブル
+## item_purchases テーブル
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
@@ -46,9 +49,13 @@
 
 ## delivary_address テーブル
 
-| Column         | Type   | Options     |
-| -------------  | ------ | ----------- |
-| street_address | string | null: false |
+| Column            | Type   | Options     |
+| -------------     | ------ | ----------- |
+| street_address    | string | null: false |
+| item_image        | string | null: false |
+| product_name      | string | null: false |
+| delivery fee      | string | null: false |
+| day until shipping|string  | null: false |
 
 ### Association
  - belongs_to item transaction
