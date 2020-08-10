@@ -1,24 +1,54 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+## users テーブル
 
-* Ruby version
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| name     | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :items
+- has_many :items, through: item transaction
 
-* Database creation
 
-* Database initialization
+## items transaction テーブル
 
-* How to run the test suite
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| user_id  | string | null: false |
+| item_id  | string | null: false |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to :users
+- belongs_to :items
+- belongs_to :delivary_address
 
-* Deployment instructions
+## items テーブル
 
-* ...
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| kategori | string | null: false |
+| price    | integer| null: false |
+| product  | string | null: false |
+| exhibior | string | null: false |
+| image    | string | null: false |
+
+### Association
+ - has_many :items transaction
+ - has_many :users, thtough: item transaction
+ 
+
+
+## delivary_address テーブル
+
+| Column         | Type   | Options     |
+| -------------  | ------ | ----------- |
+| street_address | string | null: false |
+
+### Association
+ - belongs_to item transaction
