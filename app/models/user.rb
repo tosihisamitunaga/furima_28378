@@ -6,16 +6,17 @@ class User < ApplicationRecord
         #has_many :item_purchases
         #has_many :item, through: :item_purchases
 
-          validates :first_name, presence: true
-          validates :family_name, presence: true
-          validates :first_name_kana, presence: true
-          validates :family_name_kana, presence: true
-          validates :nickname, presence:true,length: { maximum:6}
-          validates :email, presence: true, format: {with: /\w+@\w+\.{1}[a-zA-Z]{2,}/}
+        with_options presence: true do
+        
+          validates :first_name, fomat: {with /\A[ぁ-んァ-ン一-龥]/, message: "は全角で入力してください。"}
+          validates :family_name, fomat: {with /\A[ぁ-んァ-ン一-龥]/, message: "は全角で入力してください。"}}
+          validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力して下さい。"}
+          validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/, message: "は全角カタカナで入力して下さい。"}
+          validates :nickname, length: { maximum:6}
+          validates :email,  format: {with: /\w+@\w+\.{1}[a-zA-Z]{2,}/}
           #VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
           #validatable :email, presence: true, fomat: { with: VALID_EMAIL_REGEX }, uniqueness: {case_sensitive: false}
-          # validates :user_name, uniqueness: true
-          validates :password, presence:true, format: {with: /(?=.{6,128})(?=.*\d+.*)(?=.*[a-zA-Z]+.*).*/}
+          validates :password,  format: {with: /(?=.{6,128})(?=.*\d+.*)(?=.*[a-zA-Z]+.*).*/}
           #validates :confirmation_password, presende:true
-
+        end
 end
