@@ -78,11 +78,31 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
 
-    it "重複したemailが存在する場合登録できないこと" do
-      @user.save
-      another_user = FactoryBot.build(:user, email: @user.email)
-      another_user.valid?
-      expect(another_user.errors.full_messages).to include("Email has already been taken")
-    end
+    
+
+      it"姓が全角でないと保存できないこと" do
+        @user.family_name = "test"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name は全角で入力してください。")
+      end
+
+      it"名が全角でないと保存できないこと"do
+        @user.first_name = "test"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name は全角で入力してください。")
+      end
+
+      it"姓の振り仮名がカタカナでないと保存できないこと"do
+        @user.family_name_kana = "てすと"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name kana は全角カタカナで入力して下さい。")
+      end
+      
+      it"名の振り仮名がカタカナでないと保存できないこと"do
+        @user.first_name_kana = "てすと"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana は全角カタカナで入力して下さい。")
+      end
+    
   end
 end
