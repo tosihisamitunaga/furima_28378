@@ -8,11 +8,15 @@ class Users::SessionsController < Devise::SessionsController
     @user = User.new
   end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  #＃POST /resource/sign_in
+    def create
+      super
+    end
 
+
+    def edit
+    end
+    
   # DELETE /resource/sign_out
   # def destroy
   #   super
