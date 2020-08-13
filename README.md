@@ -42,9 +42,10 @@
 | delivery_fee       | integer| null: false  |
 | shipping_data      |integer | null: false  |
 | coments            | text   | null: false  |
-| ship-from          | integer| null: false  |
+| ship_from          | integer| null: false  |
 |categori            | integer|              |
 | user_id            |integer |foreign_key :true |
+| product_status     |string  | nill: false  |
 
  Association
  - has_many :item_purchases
