@@ -60,6 +60,12 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Price is not included in the list")
     end
 
+    it'価格が9999999以上のときに保存できないパターン'do
+      @item.price = 1000000000000000000000
+      @item.valid?
+      expect(@item.errors.full_messages).to include()
+    end
+
     
   end
 
