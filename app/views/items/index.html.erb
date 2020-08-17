@@ -125,12 +125,38 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <% @items.each do |item| %>
-        <%= render partial: "shared/second-header", locals: {item:item}%>
+      <%= link_to item_path(item) do %>
+        <%# <%= render partial: "shared/second-header", locals: {item:item}%> 
+        <div class='item-img-content'>
+        <%= image_tag item.image, class: "item-img" %>
+
+
+        <% if item.sales_status == true%>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
       <% end %>
+      
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
+              </div>
+                <div class='item-info'>
+          <h3 class='item-name'>
+            <%= item.product_name %>
+          </h3> 
+          <div class='item-price'>
+            <span>¥<%= item.price%><br>(税込み)</span> 
+            <div class='star-btn'> 
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+              </div>
+          </div>
+          <% end %>
+        <% end %>
+      </li>
 
       <%# 商品がない場合のダミー %>
       <%# 商品がある場合は表示されないようにしましょう %
