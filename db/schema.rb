@@ -44,13 +44,12 @@ ActiveRecord::Schema.define(version: 2020_08_16_080725) do
     t.integer "price"
     t.bigint "user_id"
     t.string "product_name"
-    t.integer "delivery_fee"
-    t.integer "shipping_date"
+    t.integer "delivery_fee_id"
+    t.integer "shipping_date_id"
     t.text "coments"
-    t.integer "ship_from"
-    t.integer "categori"
-    t.integer "product_status"
-    t.boolean "sales_status", default: false
+    t.integer "ship_from_id"
+    t.integer "categori_id"
+    t.integer "product_status_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"

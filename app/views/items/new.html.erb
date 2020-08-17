@@ -50,12 +50,12 @@
           <div class="field">
           </div>
         </div>
-        <%= f.collection_select :categori, Categori.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-category" %>
+        <%= f.collection_select :categori_id, Categori.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-category" %>
         <div class="weight-bold-text">
           商品の状態
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :product_status, ProductStatus.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-sales-status" %>
+        <%= f.collection_select :product_status_id, ProductStatus.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-sales-status" %>
       </div>
     </div>
     <%# /商品の詳細 %>
@@ -71,17 +71,17 @@
           配送料の負担
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :delivery_fee, DeliveryFee.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-shipping-fee-status" %>
+        <%= f.collection_select :delivery_fee_id, DeliveryFee.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-shipping-fee-status" %>
         <div class="weight-bold-text">
           発送元の地域
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :ship_from, ShipFrom.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-prefecture" %>
+        <%= f.collection_select :ship_from_id, ShipFrom.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-prefecture" %>
         <div class="weight-bold-text">
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select :shipping_date, ShippingDate.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-scheduled-delivery" %>
+        <%= f.collection_select :shipping_date_id, ShippingDate.all, :id, :name, {include_blank: "---"},class:"select-box", id:"item-scheduled-delivery" %>
       </div>
     </div>
     <%# /配送について %>
