@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
         t.integer :ship_from,        nill: false
         t.integer :categori ,        nill: false
         t.integer :product_status,   nill: false
+        t.boolean :sales_status, default: false
         t.timestamps
     end
   end

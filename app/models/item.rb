@@ -1,7 +1,8 @@
 class Item < ApplicationRecord
-    #has_many :item_purchases
-    #belongs_to :user, thtough: item_purchases
+    has_many :item_purchases
+    belongs_to :user
     has_one_attached :image
+    
 
     with_options presence: true do
 
@@ -18,6 +19,7 @@ class Item < ApplicationRecord
     end 
 
     validates_inclusion_of :price, in:300..9_999_999
+    
 
 
 
