@@ -3,7 +3,10 @@ class UsersController < ApplicationController
         @items = Item.all
     end
 
-    
+    def new
+        @items = Item.new
+    end
+
     def create
     end
 
