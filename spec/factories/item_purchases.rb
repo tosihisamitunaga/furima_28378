@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :item_purchase do
-    
-  end
+    RSpec.describe DelivaryAddress, type: :model do
+      
 end
