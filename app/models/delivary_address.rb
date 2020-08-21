@@ -7,5 +7,6 @@ class DelivaryAddress < ApplicationRecord
         validates :municipalities 
         validates :address         
         validates :tell,format:{with: /\A\d{11}\z/,  maximum:11}
+        validates :ship_from_id
     end       
 end

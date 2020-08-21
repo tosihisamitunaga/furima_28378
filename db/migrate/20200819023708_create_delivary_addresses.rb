@@ -7,7 +7,7 @@ class CreateDelivaryAddresses < ActiveRecord::Migration[6.0]
       t.string :building_name 
       t.string :tell            ,null: false 
       t.integer :user_id, foreign_key: true 
-      t.string  :ship_from      ,null:false    
+      t.string  :ship_from_id      ,null:false    
       t.timestamps
     end
   end
