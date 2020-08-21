@@ -3,18 +3,34 @@ require 'rails_helper'
 RSpec.describe DelivaryAddress, type: :model do
     describe '#create'do
         before do
+        @seller = FactoryBot.create(:user)
+        @buyer = FactoryBot.create(:user)
         @delivary_address = FactoryBot.build(:delivary_address)
+        
         end
 
 
-    it"配送先の郵便番号が必要なこと"do
+        it"出品者は購入者ができないこと"do
+          @delivary_address.user_id = @seller
+          @delivary_address.valid?
+          expect(@delivary_address.errors.full_messages).to include("Postal code is invalid")
+        end
+
+        it"購入者は出品者ではないこと"do
+          @delivary_address.user_id = @buyer
+          @delivary_address.valid?
+          expect(@delivary_address.errors.full_messages).to include("Postal code is invalid")
+        end
+
+
+        it"配送先の郵便番号が必要なこと"do
           @delivary_address.postal_code = nil
           @delivary_address.valid?
           expect(@delivary_address.errors.full_messages).to include("Postal code can't be blank")
         end
     
         it"配送先の都道府県が必要なこと"do
-        @delivary_address.ship_from = nil
+        @delivary_address.ship_from_id = nil
         @delivary_address.valid?
           expect(@delivary_address.errors.full_messages).to include("Postal code is invalid")
         end
