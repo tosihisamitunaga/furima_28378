@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_023708) do
     t.string "building_name"
     t.string "tell", null: false
     t.integer "user_id"
+    t.string "ship_from", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

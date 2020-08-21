@@ -1,5 +1,6 @@
 class ItemPurchaseController < ApplicationController
     before_action :redirect_root_path, only: [:show]
+    before_action :user,only:[:index]
     before_action :set_item, only: [:create]
 
     def index
@@ -42,8 +43,17 @@ class ItemPurchaseController < ApplicationController
         end
     end
 
+
+    def user
+    if user_signed_in?
+        redirect_root_path
+        
+    end
+
+
     def set_item
         @item = Item.find(params[:item_id])
-
     end
+
+
 end
