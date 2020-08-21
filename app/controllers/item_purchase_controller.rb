@@ -1,6 +1,7 @@
 class ItemPurchaseController < ApplicationController
-    before_action :redirect_root_path, only: [:show]
-    before_action :user,only:[:index]
+    before_action :redirect_root_path, only: [:index]
+    before_action :move_to_index, only:[:index]
+    before_action :pachase_redirect, only:[:index]
     before_action :set_item, only: [:create]
 
     def index
@@ -44,11 +45,19 @@ class ItemPurchaseController < ApplicationController
     end
 
 
-    def user
-    if user_signed_in?
-        redirect_root_path
-        
+    def move_to_index
+        unless user_signed_in?
+            redirect_to new_user_session_path, alert: "ログインしてください"
+        end
     end
+
+    def pachase_redirect
+        @item = Item.find(params[:item_id])
+        if @item.item_purchase 
+            redirect_to root_path
+        end
+    end
+
 
 
     def set_item

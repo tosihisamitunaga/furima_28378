@@ -1,5 +1,5 @@
 class DelivaryAddress < ApplicationRecord
-    # belongs_to :item_purchase
+    
 
     with_options presence: true do
 
