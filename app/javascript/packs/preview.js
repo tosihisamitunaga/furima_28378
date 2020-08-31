@@ -1,4 +1,4 @@
-if (document.URL.match( /edit/ )){
+if (document.URL.match( /new/ ) || document.URL.match( /edit/ )){
 document.addEventListener('DOMContentLoaded', function(){
     const imageList = document.getElementById('image-list');
 
@@ -11,9 +11,12 @@ document.addEventListener('DOMContentLoaded', function(){
        // 表示する画像を生成
         const blobImage = document.createElement('img');
         blobImage.setAttribute('src', blob);
+        
+
        // 生成したHTMLの要素をブラウザに表示させる
         imageElement.appendChild(blobImage);
         imageList.appendChild(imageElement);
+        
     };
         //画像が表示されている場合、存在している画像を消去する
         const imageContent = document.querySelector('img');
@@ -22,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
         const file = e.target.files[0];
         const blob = window.URL.createObjectURL(file);
+
 
         createImageHTML(blob);
     });
