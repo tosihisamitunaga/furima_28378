@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+<h1>
+商品検索
+</h1>
+<%= search_form_for @p, url: items_search2_url do |f| %>
+    <%= f.label :categori_id_eq, 'カテゴリー' %>
+    <%= f.collection_select :categori_id_eq, Categori.all, :id, :name,  include_blank: '指定なし', class:"select-box" %>
+    <br>
+    <%= f.label :product_status_id_eq, '商品の状態' %>
+    <%= f.collection_select :product_status_id_eq, ProductStatus.all, :id, :name,  include_blank: '指定なし', class:"select-box" %>
+    <br>
+    <%= f.label :ship_from_id_eq, '配送元地域' %>
+    <%= f.collection_select :ship_from_id_eq, ShipFrom.all, :id, :name,  include_blank: '指定なし',class:"select-box" %>
+    <br>
+    <%= f.label :shipping_date_id_eq, '発送までの日数' %>
+    <%= f.collection_select :shipping_date_id_eq, ShippingDate.all, :id, :name,  include_blank: '指定なし',class:"select-box" %>
+    <br>
+    <%= f.label :price, '価格' %>
+    <%= f.radio_button :price_lteq, '' %>
+    指定なし
+    <%= f.radio_button :price_lteq, '1000' %>
+    1000円以下
+    <%= f.radio_button :price_lteq, '2500' %>
+    2500円以下
+    <%= f.radio_button :price_lteq, '5000' %>
+    5000円以下
+    <br>
+    <%= f.submit '検索' %>
+
+    
+
+    <%= link_to 'トップページへ戻る', root_path %>
+<% end %>

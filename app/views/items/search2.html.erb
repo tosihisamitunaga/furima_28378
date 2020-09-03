@@ -1,0 +1,74 @@
+<%= render "shared/header" %>
+<h1>
+商品検索
+</h1>
+<%= search_form_for @p, url: items_search2_url do |f| %>
+    <%= f.label :categori_id_eq, 'カテゴリー' %>
+    <%= f.collection_select :categori_id_eq, Categori.all, :id, :name,  include_blank: '指定なし', class:"select-box" %>
+    <br>
+    <%= f.label :product_status_id_eq, '商品の状態' %>
+    <%= f.collection_select :product_status_id_eq, ProductStatus.all, :id, :name,  include_blank: '指定なし', class:"select-box" %>
+    <br>
+    <%= f.label :ship_from_id_eq, '配送元地域' %>
+    <%= f.collection_select :ship_from_id_eq, ShipFrom.all, :id, :name,  include_blank: '指定なし',class:"select-box" %>
+    <br>
+    <%= f.label :shipping_date_id_eq, '発送までの日数' %>
+    <%= f.collection_select :shipping_date_id_eq, ShippingDate.all, :id, :name,  include_blank: '指定なし',class:"select-box" %>
+    <br>
+    <%= f.label :price, '価格' %>
+    <%= f.radio_button :price_lteq, '' %>
+    指定なし
+    <%= f.radio_button :price_lteq, '1000' %>
+    1000円以下
+    <%= f.radio_button :price_lteq, '2500' %>
+    2500円以下
+    <%= f.radio_button :price_lteq, '5000' %>
+    5000円以下
+    <br>
+    <%= f.submit '検索' %>
+
+    <%# 商品一覧 %>
+<div class='item-contents'>
+    <h2 class='title'>ピックアップカテゴリー</h2>
+    <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
+    <ul class='item-lists'>
+    <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+    <% @items.each do |item| %>
+    <li class='list'><%= link_to item_path(item) do %>
+        <%# <%= render partial: "shared/second-header", locals: {item:item}%> 
+        <div class='item-img-content'>
+        <%= image_tag item.image, class: "item-img" %>
+
+
+        <% if item.item_purchase %>
+        <div class='sold-out'>
+            <span>Sold Out!!</span>
+        </div>
+        <% end %>
+    
+                  <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
+            </div>
+                <div class='item-info'>
+        <h3 class='item-name'>
+            <%= item.product_name %>
+        </h3> 
+        <div class='item-price'>
+            <span>¥<%= item.price%><br>(税込み)</span> 
+            <div class='star-btn'> 
+            <%= image_tag "star.png", class:"star-icon" %>
+            <span class='star-count'>0</span>
+            </div>
+            </div>
+        <div>
+        <% end %>
+        <% end %>
+    </li>
+
+    
+    </ul>
+</div>
+  <%# //商品一覧 %>
+    
+
+    <% end %>

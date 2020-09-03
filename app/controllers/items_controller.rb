@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
         before_action :set_item, only: [:show,:edit,:destroy,:update]
-        
+        before_action :search_product, only:[:search,:search2]
 
 
     def index
@@ -27,6 +27,14 @@ class ItemsController < ApplicationController
 
     def edit
         
+    end
+
+    def search
+    end
+
+    def search2
+        @items = @p.result
+        #binding.pry
     end
 
     def destroy
@@ -57,6 +65,8 @@ class ItemsController < ApplicationController
         @item = Item.find(params[:id])
     end
 
-    
+    def search_product
+        @p = Item.ransack(params[:q])
+    end
     
 end
