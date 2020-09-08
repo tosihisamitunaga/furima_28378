@@ -29,13 +29,6 @@ class ItemsController < ApplicationController
         
     end
 
-    def search
-    end
-
-    def search2
-        @items = @p.result
-        #binding.pry
-    end
 
     def destroy
         if @item.destroy
@@ -51,6 +44,15 @@ class ItemsController < ApplicationController
         else
             render :edit
         end
+    end
+
+
+    def search
+    end
+
+    def search2
+        @items = @p.result
+        #binding.pry
     end
 
 

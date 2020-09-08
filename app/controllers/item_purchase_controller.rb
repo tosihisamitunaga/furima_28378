@@ -12,7 +12,7 @@ class ItemPurchaseController < ApplicationController
 
     def create
         @item_purchase = UserAddress.new(item_purchase_params)
-        pay_item
+        pay_item 
         if @item_purchase.valid?
             @item_purchase.save
             redirect_to root_path

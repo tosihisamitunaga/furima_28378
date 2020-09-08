@@ -9,12 +9,11 @@ class UserAddress
         tell = {with: /\A\d{11}\z/,  maximum:11}
 
 
-        validates :nickname, format: nickname
+        
         validates :postal_code, format: postal_code
-        #validates :prefecture, numericality: { other_than: 0, message: "can't be blank" }
         validates :postal_code,  format:  postal_code
         validates :municipalities 
-        validates :address         
+        validates :address
         validates :tell,format: tell
         validates :ship_from_id
     end
