@@ -89,10 +89,10 @@
   margin-bottom: 15px;
 }
 
-.preview_image>div>img {
+.preview_image>div>img { 
   height: 350px;
   width: 350px;
-}
+} 
 
 
 /* /出品画像 */
